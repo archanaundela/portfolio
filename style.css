@@ -5,13 +5,6 @@
 ========================================================= */
 
 /* =========================
-   GOOGLE FONT
-========================= */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-
-/* =========================
    RESET
 ========================= */
 
@@ -123,8 +116,7 @@ header {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
-    box-shadow:
-        0 15px 50px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -189,6 +181,17 @@ header {
 }
 
 .nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ACTIVE LINK */
+
+.nav-links a.active-link {
+    color: #c4b5fd;
+}
+
+.nav-links a.active-link::after {
     width: 100%;
 }
 
@@ -482,7 +485,7 @@ header {
 }
 
 
-/* SMALL DECORATIVE DOT */
+/* DECORATIVE DOT */
 
 .hero-image::after {
     content: "";
@@ -563,6 +566,7 @@ header {
 ========================= */
 
 @keyframes float {
+
     0%,
     100% {
         transform: translateY(0);
@@ -574,6 +578,7 @@ header {
 }
 
 @keyframes rotate {
+
     from {
         transform: rotate(0deg);
     }
@@ -1329,7 +1334,7 @@ footer {
 
 
 /* =========================
-   RESPONSIVE — TABLET
+   TABLET
 ========================= */
 
 @media (max-width: 950px) {
@@ -1361,7 +1366,7 @@ footer {
 
 
 /* =========================
-   RESPONSIVE — MOBILE
+   MOBILE
 ========================= */
 
 @media (max-width: 750px) {
