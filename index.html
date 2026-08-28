@@ -1,1003 +1,158 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Archana Undela - Computer Application Graduate, Developer, and Problem Solver." />
+  <title>Archana Undela | Portfolio</title>
 
-    <meta charset="UTF-8">
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="Archana Undela - MCA Student and Aspiring Software Developer Portfolio">
-
-    <title>Archana Undela | Portfolio</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#hero" class="logo">Archana.</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">Welcome to my portfolio</p>
+      <h1 class="hero-title">Hi, I'm <span class="gradient-text">Archana Undela</span></h1>
+      <div class="typing-container">
+        <span class="typing"></span>
+      </div>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </section>
 
-    <header>
-
-        <nav class="navbar">
-
-            <div class="logo">
-                Archana<span>.</span>
-            </div>
-
-
-            <ul class="nav-links" id="navLinks">
-
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#skills">Skills</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-
-                <li>
-                    <a href="#experience">Experience</a>
-                </li>
-
-                <li>
-                    <a href="#education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#certifications">Certifications</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-            </ul>
-
-
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Open navigation menu">
-
-                ☰
-
-            </button>
-
-        </nav>
-
-    </header>
-
-
-
-    <!-- =========================
-         HOME
-    ========================== -->
-
-    <section id="home" class="hero">
-
-
-        <div class="hero-content">
-
-
-            <p class="hello">
-                HELLO, I'M
-            </p>
-
-
-            <h1>
-                Archana
-                <span>Undela</span>
-            </h1>
-
-
-            <h2>
-                MCA Student
-            </h2>
-
-
-            <p class="hero-description">
-
-                I am passionate about programming and building
-                practical software solutions using Python, Java,
-                SQL and web technologies.
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <a href="#projects"
-                    class="btn primary-btn">
-
-                    View My Projects
-
-                </a>
-
-
-                <a href="#contact"
-                    class="btn secondary-btn">
-
-                    Contact Me
-
-                </a>
-
-            </div>
-
-
-            <div class="social-links">
-
-                <a href="https://github.com/"
-                    target="_blank">
-
-                    GitHub
-
-                </a>
-
-
-                <a href="https://linkedin.com/"
-                    target="_blank">
-
-                    LinkedIn
-
-                </a>
-
-            </div>
-
-
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <p class="section-tagline">A selection of technical projects and creations</p>
+    </div>
+    <div class="projects-grid">
+      
+      <div class="glass-card project-card">
+        <div>
+          <h3 class="project-title">Real-Time Mask Detection</h3>
+          <p class="project-desc">A deep learning framework built in Python to recognize face mask compliance in live camera video streams using computer vision.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">OpenCV</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Keras</span>
+          </div>
         </div>
+        <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">View Project</a>
+      </div>
 
-
-
-        <!-- PROFILE -->
-
-        <div class="hero-image">
-
-            <div class="profile-circle">
-
-                AU
-
-            </div>
-
+      <div class="glass-card project-card">
+        <div>
+          <h3 class="project-title">Full-Stack Web App</h3>
+          <p class="project-desc">Interactive web application structured with dynamic client-side rendering and secure backend API architecture.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Java</span>
+            <span class="tag">REST API</span>
+          </div>
         </div>
+        <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">View Project</a>
+      </div>
 
-
-    </section>
-
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section id="about" class="section">
-
-
-        <div class="section-title">
-
-            <p>
-                GET TO KNOW ME
-            </p>
-
-            <h2>
-                About Me
-            </h2>
-
+      <div class="glass-card project-card">
+        <div>
+          <h3 class="project-title">Data Visualization Hub</h3>
+          <p class="project-desc">Analytics dashboard performing deep data modeling, dynamic querying, and visual statistical reporting.</p>
+          <div class="project-tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Python</span>
+          </div>
         </div>
-
-
-
-        <div class="about-container">
-
-
-            <div class="about-text">
-
-                <h3>
-                    Building my skills,
-                    one project at a time.
-                </h3>
-
-
-                <p>
-
-                    I am currently pursuing my
-                    Master of Computer Applications
-                    (MCA) at R.V.R & J.C College of
-                    Engineering, Guntur.
-
-                </p>
-
-
-                <p>
-
-                    I have a strong interest in software
-                    development, programming and problem
-                    solving. I enjoy learning new
-                    technologies and applying my knowledge
-                    by creating practical projects.
-
-                </p>
-
-
-                <p>
-
-                    My current technical interests include
-                    Python, Java, SQL, web development
-                    and Data Science.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="about-card">
-
-
-                <div class="info">
-
-                    <strong>
-                        Name
-                    </strong>
-
-                    <span>
-                        Archana Undela
-                    </span>
-
-                </div>
-
-
-                <div class="info">
-
-                    <strong>
-                        Degree
-                    </strong>
-
-                    <span>
-                        Master of Computer Applications
-                    </span>
-
-                </div>
-
-
-                <div class="info">
-
-                    <strong>
-                        Location
-                    </strong>
-
-                    <span>
-                        Andhra Pradesh, India
-                    </span>
-
-                </div>
-
-
-                <div class="info">
-
-                    <strong>
-                        Career Goal
-                    </strong>
-
-                    <span>
-                        Software Developer
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         SKILLS
-    ========================== -->
-
-    <section id="skills"
-        class="section skills-section">
-
-
-        <div class="section-title">
-
-            <p>
-                WHAT I WORK WITH
-            </p>
-
-            <h2>
-                Technical Skills
-            </h2>
-
-        </div>
-
-
-
-        <div class="skills-container">
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    🐍
-                </div>
-
-                <h3>
-                    Python
-                </h3>
-
-                <p>
-                    Programming, problem solving
-                    and application development.
-                </p>
-
-            </div>
-
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ☕
-                </div>
-
-                <h3>
-                    Java
-                </h3>
-
-                <p>
-                    Object-oriented programming
-                    and application development.
-                </p>
-
-            </div>
-
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    🗄️
-                </div>
-
-                <h3>
-                    SQL
-                </h3>
-
-                <p>
-                    Database design, queries
-                    and data management.
-                </p>
-
-            </div>
-
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    🌐
-                </div>
-
-                <h3>
-                    HTML & CSS
-                </h3>
-
-                <p>
-                    Creating responsive and
-                    user-friendly web interfaces.
-                </p>
-
-            </div>
-
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    JavaScript
-                </h3>
-
-                <p>
-                    Adding interactive features
-                    to web applications.
-                </p>
-
-            </div>
-
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">
-                    📊
-                </div>
-
-                <h3>
-                    Data Science
-                </h3>
-
-                <p>
-                    Exploring data analysis and
-                    machine learning concepts.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         PROJECTS
-    ========================== -->
-
-    <section id="projects"
-        class="section">
-
-
-        <div class="section-title">
-
-            <p>
-                MY WORK
-            </p>
-
-            <h2>
-                Featured Projects
-            </h2>
-
-        </div>
-
-
-
-        <div class="projects-container">
-
-
-            <!-- PROJECT 1 -->
-
-            <div class="project-card">
-
-                <div class="project-number">
-                    01
-                </div>
-
-
-                <h3>
-                    Employee Payroll
-                    Management System
-                </h3>
-
-
-                <p>
-
-                    A Python-based application designed
-                    to simplify employee salary calculation,
-                    leave management and payroll operations.
-
-                </p>
-
-
-                <div class="technologies">
-
-                    <span>
-                        Python
-                    </span>
-
-                    <span>
-                        Tkinter
-                    </span>
-
-                    <span>
-                        SQL
-                    </span>
-
-                </div>
-
-
-                <a href="https://github.com/"
-                    target="_blank"
-                    class="project-link">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-
-
-            <!-- PROJECT 2 -->
-
-            <div class="project-card">
-
-                <div class="project-number">
-                    02
-                </div>
-
-
-                <h3>
-                    Face Mask Detection
-                </h3>
-
-
-                <p>
-
-                    A computer vision project that detects
-                    whether a person is wearing a face mask
-                    using image processing techniques.
-
-                </p>
-
-
-                <div class="technologies">
-
-                    <span>
-                        Python
-                    </span>
-
-                    <span>
-                        OpenCV
-                    </span>
-
-                    <span>
-                        AI
-                    </span>
-
-                </div>
-
-
-                <a href="https://github.com/"
-                    target="_blank"
-                    class="project-link">
-
-                    View on GitHub →
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
-
-    <section id="experience"
-        class="section experience-section">
-
-
-        <div class="section-title">
-
-            <p>
-                MY JOURNEY
-            </p>
-
-            <h2>
-                Internship Experience
-            </h2>
-
-        </div>
-
-
-
-        <div class="experience-card">
-
-
-            <div class="experience-header">
-
-
-                <div>
-
-                    <h3>
-                        AI Internship
-                    </h3>
-
-                    <h4>
-                        FoundryAI Labs
-                    </h4>
-
-                </div>
-
-
-                <span class="experience-date">
-
-                    Internship
-
-                </span>
-
-
-            </div>
-
-
-            <p>
-
-                Completed an internship focused on
-                Artificial Intelligence concepts and
-                practical learning. Worked with AI-related
-                tools and explored the development of
-                intelligent solutions.
-
-            </p>
-
-
-            <div class="technologies">
-
-                <span>
-                    Artificial Intelligence
-                </span>
-
-                <span>
-                    Generative AI
-                </span>
-
-                <span>
-                    AI Agents
-                </span>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         EDUCATION
-    ========================== -->
-
-    <section id="education"
-        class="section">
-
-
-        <div class="section-title">
-
-            <p>
-                MY ACADEMIC JOURNEY
-            </p>
-
-            <h2>
-                Education
-            </h2>
-
-        </div>
-
-
-
-        <div class="timeline">
-
-
-            <!-- MCA -->
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-
-                <div class="timeline-content">
-
-                    <span>
-                        2025 – 2027
-                    </span>
-
-                    <h3>
-                        Master of Computer Applications
-                    </h3>
-
-                    <p>
-                        R.V.R & J.C College of Engineering
-                    </p>
-
-                    <strong>
-                        CGPA: 8.53
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- BCA -->
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-
-                <div class="timeline-content">
-
-                    <span>
-                        2022 – 2025
-                    </span>
-
-                    <h3>
-                        Bachelor of Computer Applications
-                    </h3>
-
-                    <p>
-                        Acharya Nagarjuna University
-                    </p>
-
-                    <strong>
-                        CGPA: 8.76
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- INTERMEDIATE -->
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-
-                <div class="timeline-content">
-
-                    <span>
-                        2020 – 2022
-                    </span>
-
-                    <h3>
-                        Intermediate
-                    </h3>
-
-                    <p>
-                        M.N.M Junior College, Kanigiri
-                    </p>
-
-                    <strong>
-                        952 / 1000
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SSC -->
-
-            <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-
-                <div class="timeline-content">
-
-                    <span>
-                        2019 – 2020
-                    </span>
-
-                    <h3>
-                        SSC
-                    </h3>
-
-                    <p>
-                        Gomathy High School, Kanigiri
-                    </p>
-
-                    <strong>
-                        GPA: 10.0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         CERTIFICATIONS
-    ========================== -->
-
-    <section id="certifications"
-        class="section certifications">
-
-
-        <div class="section-title">
-
-            <p>
-                MY LEARNING
-            </p>
-
-            <h2>
-                Certifications
-            </h2>
-
-        </div>
-
-
-
-        <div class="certificate-container">
-
-
-            <div class="certificate-card">
-
-                <span class="certificate-icon">
-                    🏆
-                </span>
-
-                <h3>
-                    Generative AI
-                </h3>
-
-                <p>
-
-                    AI and Generative AI related
-                    learning and certification.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="certificate-card">
-
-                <span class="certificate-icon">
-                    🤖
-                </span>
-
-                <h3>
-                    AI Internship
-                </h3>
-
-                <p>
-
-                    Internship completion certification
-                    from FoundryAI Labs.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section id="contact"
-        class="contact-section">
-
-
-        <div class="section-title">
-
-            <p>
-                GET IN TOUCH
-            </p>
-
-            <h2>
-                Let's Connect
-            </h2>
-
-        </div>
-
-
-        <p class="contact-description">
-
-            I am always interested in learning,
-            collaborating and exploring new opportunities.
-
-        </p>
-
-
-        <div class="contact-buttons">
-
-
-            <a href="mailto:your-email@gmail.com"
-                class="btn primary-btn">
-
-                📧 Email Me
-
-            </a>
-
-
-            <a href="https://www.linkedin.com/"
-                target="_blank"
-                class="btn secondary-btn">
-
-                LinkedIn
-
-            </a>
-
-
-            <a href="https://github.com/"
-                target="_blank"
-                class="btn secondary-btn">
-
-                GitHub
-
-            </a>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <p>
-
-            © 2026 Archana Undela.
-            Built with HTML, CSS & JavaScript.
-
-        </p>
-
-    </footer>
-
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="script.js"></script>
-
-
+        <a href="#" class="btn btn-outline" style="width: 100%; justify-content: center;">View Project</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+      <p class="section-tagline">Core tools, languages, and technical disciplines</p>
+    </div>
+    <div class="skills-grid">
+      <div class="glass-card skill-card">
+        <i class="fa-brands fa-python skill-icon"></i>
+        <h3 class="skill-name">Python</h3>
+      </div>
+      <div class="glass-card skill-card">
+        <i class="fa-brands fa-java skill-icon"></i>
+        <h3 class="skill-name">Java</h3>
+      </div>
+      <div class="glass-card skill-card">
+        <i class="fa-solid fa-database skill-icon"></i>
+        <h3 class="skill-name">SQL & Databases</h3>
+      </div>
+      <div class="glass-card skill-card">
+        <i class="fa-brands fa-react skill-icon"></i>
+        <h3 class="skill-name">Web Development</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section">
+    <div class="glass-card contact-container">
+      <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+      <p class="section-tagline" style="margin-top: 0.5rem;">Feel free to reach out for collaborations or opportunities.</p>
+      <div class="contact-links">
+        <button class="social-btn" data-email="archana@example.com" aria-label="Send Email">
+          <i class="fa-solid fa-envelope"></i>
+        </button>
+        <a href="https://github.com" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; <span id="year"></span> Archana Undela. Designed & Built with Precision.</p>
+  </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
 </body>
-
 </html>
-```
