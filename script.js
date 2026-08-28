@@ -1,199 +1,652 @@
+```javascript
 /* =========================================================
    ARCHANA UNDELA PORTFOLIO
-   Optimized Interactive Logic
+   Interactive JavaScript
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-  
-  /* --- MOBILE MENU --- */
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
-  const links = document.querySelectorAll(".nav-links a");
 
-  function toggleMenu(open) {
-    const isActive = open !== undefined ? open : !navLinks.classList.contains("active");
-    navLinks.classList.toggle("active", isActive);
-    menuBtn.innerHTML = isActive ? "✕" : "☰";
-    menuBtn.setAttribute("aria-expanded", isActive);
-  }
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener("click", () => toggleMenu());
-    links.forEach(link => link.addEventListener("click", () => toggleMenu(false)));
+const menuBtn =
+    document.getElementById("menuBtn");
 
-    document.addEventListener("click", (e) => {
-      if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
-        toggleMenu(false);
-      }
+const navLinks =
+    document.getElementById("navLinks");
+
+
+if (menuBtn && navLinks) {
+
+    menuBtn.addEventListener(
+        "click",
+        function () {
+
+            navLinks.classList.toggle(
+                "active"
+            );
+
+
+            if (
+                navLinks.classList.contains(
+                    "active"
+                )
+            ) {
+
+                menuBtn.innerHTML = "✕";
+
+            } else {
+
+                menuBtn.innerHTML = "☰";
+
+            }
+
+        }
+    );
+
+
+    /* Close menu after clicking link */
+
+    const links =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
+
+
+    links.forEach(function (link) {
+
+        link.addEventListener(
+            "click",
+            function () {
+
+                navLinks.classList.remove(
+                    "active"
+                );
+
+                menuBtn.innerHTML = "☰";
+
+            }
+        );
+
     });
-  }
 
-  /* --- SCROLL REVEAL (INTERSECTION OBSERVER) --- */
-  const observerOptions = { threshold: 0.1 };
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
+}
 
-  document.querySelectorAll(".section").forEach(section => {
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        ".section"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(
+                function (entry) {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.style.opacity =
+                            "1";
+
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.1
+        }
+
+    );
+
+
+sections.forEach(function (section) {
+
     section.style.opacity = "0";
-    section.style.transform = "translateY(30px)";
-    section.style.transition = "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
-    revealObserver.observe(section);
-  });
 
-  /* --- ACTIVE NAVIGATION & NAVBAR SCROLL --- */
-  const allSections = document.querySelectorAll("section[id]");
-  const navAnchors = document.querySelectorAll(".nav-links a");
-  const navbar = document.querySelector(".navbar");
-  const scrollTopButton = document.getElementById("scrollTop");
+    section.style.transform =
+        "translateY(30px)";
 
-  let isTicking = false;
+    section.style.transition =
+        "opacity 0.8s ease, transform 0.8s ease";
 
-  window.addEventListener("scroll", () => {
-    if (!isTicking) {
-      window.requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
+    observer.observe(section);
 
-        // Navbar Background
-        if (navbar) {
-          if (scrollY > 50) {
-            navbar.style.background = "rgba(12, 10, 22, 0.92)";
-            navbar.style.boxShadow = "0 15px 50px rgba(0, 0, 0, 0.35)";
-          } else {
-            navbar.style.background = "rgba(17, 15, 30, 0.75)";
-            navbar.style.boxShadow = "none";
-          }
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const allSections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+const navigationLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+function updateActiveLink() {
+
+    let currentSection = "";
+
+
+    allSections.forEach(
+        function (section) {
+
+            const sectionTop =
+                section.offsetTop - 180;
+
+            const sectionBottom =
+                sectionTop +
+                section.offsetHeight;
+
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionBottom
+            ) {
+
+                currentSection =
+                    section.getAttribute(
+                        "id"
+                    );
+
+            }
+
+        }
+    );
+
+
+    navigationLinks.forEach(
+        function (link) {
+
+            link.classList.remove(
+                "active-link"
+            );
+
+
+            const href =
+                link.getAttribute(
+                    "href"
+                );
+
+
+            if (
+                href ===
+                "#" + currentSection
+            ) {
+
+                link.classList.add(
+                    "active-link"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateActiveLink
+);
+
+
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+const navbar =
+    document.querySelector(
+        ".navbar"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        if (!navbar) return;
+
+
+        if (window.scrollY > 50) {
+
+            navbar.style.background =
+                "rgba(10, 8, 18, 0.94)";
+
+            navbar.style.boxShadow =
+                "0 15px 50px rgba(0,0,0,0.4)";
+
+        } else {
+
+            navbar.style.background =
+                "rgba(17,15,30,0.72)";
+
+            navbar.style.boxShadow =
+                "0 15px 50px rgba(0,0,0,0.25)";
+
         }
 
-        // Scroll Top Button
-        if (scrollTopButton) {
-          scrollTopButton.classList.toggle("show", scrollY > 500);
-        }
-
-        // Active Link Highlighting
-        let currentSection = "";
-        allSections.forEach(section => {
-          const sectionTop = section.offsetTop - 150;
-          const sectionHeight = section.offsetHeight;
-          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute("id");
-          }
-        });
-
-        navAnchors.forEach(link => {
-          link.classList.remove("active-link");
-          if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active-link");
-          }
-        });
-
-        isTicking = false;
-      });
-      isTicking = true;
     }
-  }, { passive: true });
+);
 
-  if (scrollTopButton) {
-    scrollTopButton.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
 
-  /* --- TYPING EFFECT --- */
-  const typingElement = document.querySelector(".typing");
-  if (typingElement) {
-    const words = ["Python Developer", "Java Developer", "Data Science Enthusiast", "Creative Problem Solver"];
+/* =========================================================
+   TYPING EFFECT
+========================================================= */
+
+const typingElement =
+    document.querySelector(
+        ".typing"
+    );
+
+
+if (typingElement) {
+
+    const words = [
+
+        "Python Developer",
+
+        "Java Developer",
+
+        "Data Science Enthusiast",
+
+        "Creative Problem Solver"
+
+    ];
+
+
     let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+
+    let characterIndex = 0;
+
+    let deleting = false;
+
 
     function typeEffect() {
-      const currentWord = words[wordIndex];
 
-      if (!isDeleting) {
-        typingElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 1500);
-          return;
-        }
-      } else {
-        typingElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length;
-        }
-      }
+        const currentWord =
+            words[wordIndex];
 
-      const speed = isDeleting ? 60 : 100;
-      setTimeout(typeEffect, speed);
+
+        if (!deleting) {
+
+            typingElement.textContent =
+                currentWord.substring(
+                    0,
+                    characterIndex + 1
+                );
+
+
+            characterIndex++;
+
+
+            if (
+                characterIndex ===
+                currentWord.length
+            ) {
+
+                deleting = true;
+
+
+                setTimeout(
+                    typeEffect,
+                    1500
+                );
+
+
+                return;
+
+            }
+
+        } else {
+
+            typingElement.textContent =
+                currentWord.substring(
+                    0,
+                    characterIndex - 1
+                );
+
+
+            characterIndex--;
+
+
+            if (
+                characterIndex === 0
+            ) {
+
+                deleting = false;
+
+                wordIndex++;
+
+
+                if (
+                    wordIndex ===
+                    words.length
+                ) {
+
+                    wordIndex = 0;
+
+                }
+
+            }
+
+        }
+
+
+        const speed =
+            deleting
+                ? 55
+                : 95;
+
+
+        setTimeout(
+            typeEffect,
+            speed
+        );
+
     }
 
+
     typeEffect();
-  }
 
-  /* --- BUTTON RIPPLE EFFECT --- */
-  document.querySelectorAll(".btn").forEach(button => {
-    button.addEventListener("click", function (event) {
-      const ripple = document.createElement("span");
-      const rect = button.getBoundingClientRect();
+}
 
-      ripple.style.position = "absolute";
-      ripple.style.borderRadius = "50%";
-      ripple.style.background = "rgba(255, 255, 255, 0.3)";
-      ripple.style.width = "10px";
-      ripple.style.height = "10px";
-      ripple.style.pointerEvents = "none";
-      ripple.style.left = `${event.clientX - rect.left - 5}px`;
-      ripple.style.top = `${event.clientY - rect.top - 5}px`;
 
-      button.appendChild(ripple);
+/* =========================================================
+   PROJECT CARD 3D EFFECT
+========================================================= */
 
-      ripple.animate([
-        { transform: "scale(0)", opacity: 1 },
-        { transform: "scale(25)", opacity: 0 }
-      ], { duration: 600, easing: "ease-out" });
+const projectCards =
+    document.querySelectorAll(
+        ".project-card"
+    );
 
-      setTimeout(() => ripple.remove(), 600);
-    });
-  });
 
-  /* --- PROJECT CARD TILT EFFECT --- */
-  document.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotateX = (y - rect.height / 2) / 20;
-      const rotateY = (rect.width / 2 - x) / 20;
+projectCards.forEach(
+    function (card) {
 
-      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-    });
 
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "perspective(800px) rotateX(0) rotateY(0) translateY(0)";
-    });
-  });
+        card.addEventListener(
+            "mousemove",
+            function (event) {
 
-  /* --- CONTACT EMAIL BUTTONS --- */
-  document.querySelectorAll("[data-email]").forEach(button => {
-    button.addEventListener("click", () => {
-      const email = button.getAttribute("data-email");
-      if (email) window.location.href = "mailto:" + email;
-    });
-  });
+                const rect =
+                    card.getBoundingClientRect();
 
-  /* --- DYNAMIC YEAR --- */
-  const yearElement = document.getElementById("year");
-  if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-  console.log("✨ Portfolio initialized successfully.");
-});
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateX =
+                    (y - centerY) / 35;
+
+
+                const rotateY =
+                    (centerX - x) / 35;
+
+
+                card.style.transform =
+                    `perspective(900px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-5px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            function () {
+
+                card.style.transform =
+                    "perspective(900px) rotateX(0deg) rotateY(0deg)";
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   BUTTON RIPPLE EFFECT
+========================================================= */
+
+const buttons =
+    document.querySelectorAll(
+        ".btn"
+    );
+
+
+buttons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+
+                const ripple =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                ripple.style.position =
+                    "absolute";
+
+
+                ripple.style.borderRadius =
+                    "50%";
+
+
+                ripple.style.background =
+                    "rgba(255,255,255,0.3)";
+
+
+                ripple.style.width =
+                    "10px";
+
+
+                ripple.style.height =
+                    "10px";
+
+
+                ripple.style.transform =
+                    "scale(0)";
+
+
+                ripple.style.pointerEvents =
+                    "none";
+
+
+                const rect =
+                    button.getBoundingClientRect();
+
+
+                ripple.style.left =
+                    event.clientX -
+                    rect.left -
+                    5 +
+                    "px";
+
+
+                ripple.style.top =
+                    event.clientY -
+                    rect.top -
+                    5 +
+                    "px";
+
+
+                button.style.position =
+                    "relative";
+
+
+                button.style.overflow =
+                    "hidden";
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                ripple.animate(
+
+                    [
+                        {
+                            transform:
+                                "scale(0)",
+
+                            opacity: 1
+                        },
+
+                        {
+                            transform:
+                                "scale(25)",
+
+                            opacity: 0
+                        }
+                    ],
+
+                    {
+                        duration: 600,
+
+                        easing: "ease-out"
+                    }
+
+                );
+
+
+                setTimeout(
+                    function () {
+
+                        ripple.remove();
+
+                    },
+                    600
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MOBILE MENU OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        if (!menuBtn || !navLinks) {
+            return;
+        }
+
+
+        const clickedMenu =
+            navLinks.contains(
+                event.target
+            );
+
+
+        const clickedButton =
+            menuBtn.contains(
+                event.target
+            );
+
+
+        if (
+            !clickedMenu &&
+            !clickedButton
+        ) {
+
+            navLinks.classList.remove(
+                "active"
+            );
+
+            menuBtn.innerHTML =
+                "☰";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FOOTER YEAR
+========================================================= */
+
+const yearElement =
+    document.getElementById(
+        "year"
+    );
+
+
+if (yearElement) {
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+}
+
+
+/* =========================================================
+   INITIAL ACTIVE LINK
+========================================================= */
+
+updateActiveLink();
+
+
+/* =========================================================
+   CONSOLE
+========================================================= */
+
+console.log(
+    "✨ Archana Undela Portfolio Loaded Successfully!"
+);
+```
