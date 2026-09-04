@@ -1,4 +1,3 @@
-```javascript
 /* =========================================================
    ARCHANA UNDELA PORTFOLIO
    Interactive JavaScript
@@ -9,64 +8,37 @@
    MOBILE MENU
 ========================================================= */
 
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const navLinks =
-    document.getElementById("navLinks");
-
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
 if (menuBtn && navLinks) {
 
-    menuBtn.addEventListener(
-        "click",
-        function () {
+    menuBtn.addEventListener("click", function () {
 
-            navLinks.classList.toggle(
-                "active"
-            );
+        navLinks.classList.toggle("active");
 
-
-            if (
-                navLinks.classList.contains(
-                    "active"
-                )
-            ) {
-
-                menuBtn.innerHTML = "✕";
-
-            } else {
-
-                menuBtn.innerHTML = "☰";
-
-            }
-
+        if (navLinks.classList.contains("active")) {
+            menuBtn.innerHTML = "✕";
+        } else {
+            menuBtn.innerHTML = "☰";
         }
-    );
+
+    });
 
 
     /* Close menu after clicking link */
 
-    const links =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
-
+    const links = document.querySelectorAll(".nav-links a");
 
     links.forEach(function (link) {
 
-        link.addEventListener(
-            "click",
-            function () {
+        link.addEventListener("click", function () {
 
-                navLinks.classList.remove(
-                    "active"
-                );
+            navLinks.classList.remove("active");
 
-                menuBtn.innerHTML = "☰";
+            menuBtn.innerHTML = "☰";
 
-            }
-        );
+        });
 
     });
 
@@ -77,42 +49,32 @@ if (menuBtn && navLinks) {
    SCROLL REVEAL
 ========================================================= */
 
-const sections =
-    document.querySelectorAll(
-        ".section"
-    );
+const sections = document.querySelectorAll(".section");
 
+const observer = new IntersectionObserver(
 
-const observer =
-    new IntersectionObserver(
+    function (entries) {
 
-        function (entries) {
+        entries.forEach(function (entry) {
 
-            entries.forEach(
-                function (entry) {
+            if (entry.isIntersecting) {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                entry.target.style.opacity = "1";
 
-                        entry.target.style.opacity =
-                            "1";
+                entry.target.style.transform =
+                    "translateY(0)";
 
-                        entry.target.style.transform =
-                            "translateY(0)";
+            }
 
-                    }
+        });
 
-                }
-            );
+    },
 
-        },
+    {
+        threshold: 0.1
+    }
 
-        {
-            threshold: 0.1
-        }
-
-    );
+);
 
 
 sections.forEach(function (section) {
@@ -135,76 +97,53 @@ sections.forEach(function (section) {
 ========================================================= */
 
 const allSections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
+    document.querySelectorAll("section[id]");
 
 const navigationLinks =
-    document.querySelectorAll(
-        ".nav-links a"
-    );
+    document.querySelectorAll(".nav-links a");
 
 
 function updateActiveLink() {
 
     let currentSection = "";
 
+    allSections.forEach(function (section) {
 
-    allSections.forEach(
-        function (section) {
+        const sectionTop =
+            section.offsetTop - 180;
 
-            const sectionTop =
-                section.offsetTop - 180;
+        const sectionBottom =
+            sectionTop + section.offsetHeight;
 
-            const sectionBottom =
-                sectionTop +
-                section.offsetHeight;
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionBottom
+        ) {
 
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionBottom
-            ) {
-
-                currentSection =
-                    section.getAttribute(
-                        "id"
-                    );
-
-            }
+            currentSection =
+                section.getAttribute("id");
 
         }
-    );
+
+    });
 
 
-    navigationLinks.forEach(
-        function (link) {
+    navigationLinks.forEach(function (link) {
 
-            link.classList.remove(
-                "active-link"
-            );
+        link.classList.remove("active-link");
 
+        const href =
+            link.getAttribute("href");
 
-            const href =
-                link.getAttribute(
-                    "href"
-                );
+        if (
+            href === "#" + currentSection
+        ) {
 
-
-            if (
-                href ===
-                "#" + currentSection
-            ) {
-
-                link.classList.add(
-                    "active-link"
-                );
-
-            }
+            link.classList.add("active-link");
 
         }
-    );
+
+    });
 
 }
 
@@ -216,68 +155,23 @@ window.addEventListener(
 
 
 /* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-const navbar =
-    document.querySelector(
-        ".navbar"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        if (!navbar) return;
-
-
-        if (window.scrollY > 50) {
-
-            navbar.style.background =
-                "rgba(10, 8, 18, 0.94)";
-
-            navbar.style.boxShadow =
-                "0 15px 50px rgba(0,0,0,0.4)";
-
-        } else {
-
-            navbar.style.background =
-                "rgba(17,15,30,0.72)";
-
-            navbar.style.boxShadow =
-                "0 15px 50px rgba(0,0,0,0.25)";
-
-        }
-
-    }
-);
-
-
-/* =========================================================
    TYPING EFFECT
 ========================================================= */
 
 const typingElement =
-    document.querySelector(
-        ".typing"
-    );
-
+    document.querySelector(".typing");
 
 if (typingElement) {
 
     const words = [
 
+        "MCA Student",
         "Python Developer",
-
         "Java Developer",
-
         "Data Science Enthusiast",
-
         "Creative Problem Solver"
 
     ];
-
 
     let wordIndex = 0;
 
@@ -300,7 +194,6 @@ if (typingElement) {
                     characterIndex + 1
                 );
 
-
             characterIndex++;
 
 
@@ -311,12 +204,10 @@ if (typingElement) {
 
                 deleting = true;
 
-
                 setTimeout(
                     typeEffect,
                     1500
                 );
-
 
                 return;
 
@@ -330,18 +221,14 @@ if (typingElement) {
                     characterIndex - 1
                 );
 
-
             characterIndex--;
 
 
-            if (
-                characterIndex === 0
-            ) {
+            if (characterIndex === 0) {
 
                 deleting = false;
 
                 wordIndex++;
-
 
                 if (
                     wordIndex ===
@@ -381,71 +268,57 @@ if (typingElement) {
 ========================================================= */
 
 const projectCards =
-    document.querySelectorAll(
-        ".project-card"
+    document.querySelectorAll(".project-card");
+
+
+projectCards.forEach(function (card) {
+
+    card.addEventListener(
+        "mousemove",
+        function (event) {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                (y - centerY) / 35;
+
+            const rotateY =
+                (centerX - x) / 35;
+
+            card.style.transform =
+                `perspective(900px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
+
+        }
     );
 
 
-projectCards.forEach(
-    function (card) {
+    card.addEventListener(
+        "mouseleave",
+        function () {
 
+            card.style.transform =
+                "perspective(900px) rotateX(0deg) rotateY(0deg)";
 
-        card.addEventListener(
-            "mousemove",
-            function (event) {
+        }
+    );
 
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateX =
-                    (y - centerY) / 35;
-
-
-                const rotateY =
-                    (centerX - x) / 35;
-
-
-                card.style.transform =
-                    `perspective(900px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            function () {
-
-                card.style.transform =
-                    "perspective(900px) rotateX(0deg) rotateY(0deg)";
-
-            }
-        );
-
-    }
-);
+});
 
 
 /* =========================================================
@@ -453,125 +326,99 @@ projectCards.forEach(
 ========================================================= */
 
 const buttons =
-    document.querySelectorAll(
-        ".btn"
-    );
+    document.querySelectorAll(".btn");
 
 
-buttons.forEach(
-    function (button) {
+buttons.forEach(function (button) {
 
-        button.addEventListener(
-            "click",
-            function (event) {
+    button.addEventListener(
+        "click",
+        function (event) {
 
+            const ripple =
+                document.createElement("span");
 
-                const ripple =
-                    document.createElement(
-                        "span"
-                    );
+            ripple.style.position =
+                "absolute";
 
+            ripple.style.borderRadius =
+                "50%";
 
-                ripple.style.position =
-                    "absolute";
+            ripple.style.background =
+                "rgba(255,255,255,0.3)";
 
+            ripple.style.width = "10px";
 
-                ripple.style.borderRadius =
-                    "50%";
+            ripple.style.height = "10px";
 
+            ripple.style.transform =
+                "scale(0)";
 
-                ripple.style.background =
-                    "rgba(255,255,255,0.3)";
-
-
-                ripple.style.width =
-                    "10px";
-
-
-                ripple.style.height =
-                    "10px";
+            ripple.style.pointerEvents =
+                "none";
 
 
-                ripple.style.transform =
-                    "scale(0)";
+            const rect =
+                button.getBoundingClientRect();
 
 
-                ripple.style.pointerEvents =
-                    "none";
+            ripple.style.left =
+                event.clientX -
+                rect.left -
+                5 +
+                "px";
 
 
-                const rect =
-                    button.getBoundingClientRect();
+            ripple.style.top =
+                event.clientY -
+                rect.top -
+                5 +
+                "px";
 
 
-                ripple.style.left =
-                    event.clientX -
-                    rect.left -
-                    5 +
-                    "px";
+            button.style.position =
+                "relative";
+
+            button.style.overflow =
+                "hidden";
 
 
-                ripple.style.top =
-                    event.clientY -
-                    rect.top -
-                    5 +
-                    "px";
+            button.appendChild(ripple);
 
 
-                button.style.position =
-                    "relative";
+            ripple.animate(
 
-
-                button.style.overflow =
-                    "hidden";
-
-
-                button.appendChild(
-                    ripple
-                );
-
-
-                ripple.animate(
-
-                    [
-                        {
-                            transform:
-                                "scale(0)",
-
-                            opacity: 1
-                        },
-
-                        {
-                            transform:
-                                "scale(25)",
-
-                            opacity: 0
-                        }
-                    ],
+                [
+                    {
+                        transform: "scale(0)",
+                        opacity: 1
+                    },
 
                     {
-                        duration: 600,
-
-                        easing: "ease-out"
+                        transform: "scale(25)",
+                        opacity: 0
                     }
+                ],
 
-                );
+                {
+                    duration: 600,
+                    easing: "ease-out"
+                }
+
+            );
 
 
-                setTimeout(
-                    function () {
+            setTimeout(
+                function () {
+                    ripple.remove();
+                },
+                600
+            );
 
-                        ripple.remove();
+        }
+    );
 
-                    },
-                    600
-                );
-
-            }
-        );
-
-    }
-);
+});
 
 
 /* =========================================================
@@ -588,15 +435,10 @@ document.addEventListener(
 
 
         const clickedMenu =
-            navLinks.contains(
-                event.target
-            );
-
+            navLinks.contains(event.target);
 
         const clickedButton =
-            menuBtn.contains(
-                event.target
-            );
+            menuBtn.contains(event.target);
 
 
         if (
@@ -604,12 +446,9 @@ document.addEventListener(
             !clickedButton
         ) {
 
-            navLinks.classList.remove(
-                "active"
-            );
+            navLinks.classList.remove("active");
 
-            menuBtn.innerHTML =
-                "☰";
+            menuBtn.innerHTML = "☰";
 
         }
 
@@ -622,9 +461,7 @@ document.addEventListener(
 ========================================================= */
 
 const yearElement =
-    document.getElementById(
-        "year"
-    );
+    document.getElementById("year");
 
 
 if (yearElement) {
@@ -649,4 +486,3 @@ updateActiveLink();
 console.log(
     "✨ Archana Undela Portfolio Loaded Successfully!"
 );
-```
